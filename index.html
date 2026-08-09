@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cambridge Collocation Dossier — Set 01</title>
+<style>
+:root{
+  --ink:#1d2731; --muted:#6d6a63; --paper:#f5f0e6; --paper2:#fffdf7;
+  --line:#c8bda9; --navy:#223a53; --ox:#7b2f36; --green:#315f4a;
+  --gold:#a98543; --shadow:0 12px 30px rgba(43,37,29,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; color:var(--ink); background:
+    linear-gradient(rgba(245,240,230,.96),rgba(245,240,230,.96)),
+    repeating-linear-gradient(0deg,transparent 0 31px,rgba(81,106,121,.08) 31px 32px);
+  font-family:Georgia,"Times New Roman",serif; line-height:1.55;
+}
+button,input{font:inherit}
+button{cursor:pointer}
+.wrap{max-width:1160px;margin:auto;padding:26px 18px 72px}
+.masthead{
+  background:var(--paper2); border:1px solid var(--line); box-shadow:var(--shadow);
+  padding:28px 30px; position:relative; overflow:hidden;
+}
+.masthead:before{content:"";position:absolute;inset:0 auto 0 0;width:7px;background:var(--ox)}
+.kicker{font:700 12px/1.2 Arial,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--ox)}
+h1{font-size:clamp(30px,5vw,58px);line-height:1.02;margin:8px 0 10px;color:var(--navy);font-weight:700}
+.subtitle{max-width:820px;color:#4f4b45;margin:0}
+.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.badge{font:700 11px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:8px 10px;background:#f7f1e5}
+.navbar{
+  position:sticky;top:0;z-index:10;margin:16px 0;background:rgba(245,240,230,.94);
+  backdrop-filter:blur(10px);border:1px solid var(--line);display:flex;gap:8px;flex-wrap:wrap;padding:9px;
+}
+.navbar a,.navbar button{
+  text-decoration:none;border:0;background:transparent;color:var(--navy);padding:9px 11px;
+  font:700 12px/1 Arial,sans-serif;letter-spacing:.05em;text-transform:uppercase
+}
+.navbar a:hover,.navbar button:hover{background:#e9e0d1}
+.progressline{height:5px;background:#ddd3c3;margin-top:12px;overflow:hidden}
+.progressline span{display:block;height:100%;width:0;background:var(--ox);transition:.25s}
+.section{margin-top:28px}
+.section-head{display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:end;border-bottom:2px solid var(--navy);padding-bottom:10px;margin-bottom:16px}
+.section-num{font:700 38px/1 Arial,sans-serif;color:var(--ox)}
+.section h2{margin:0;color:var(--navy);font-size:27px}
+.section-note{margin:4px 0 0;color:var(--muted);font-size:14px}
+.case-toolbar,.match-toolbar,.blank-toolbar{
+  display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:12px 0 16px
+}
+.btn{
+  border:1px solid var(--navy);background:var(--navy);color:white;padding:9px 12px;
+  font:700 12px/1 Arial,sans-serif;letter-spacing:.04em;text-transform:uppercase
+}
+.btn.secondary{background:transparent;color:var(--navy)}
+.btn.ox{background:var(--ox);border-color:var(--ox)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.case-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.case{
+  background:var(--paper2);border:1px solid var(--line);box-shadow:0 5px 16px rgba(50,42,31,.07);
+  padding:17px;position:relative;min-height:235px
+}
+.case-top{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.case-no{font:700 11px/1 Arial,sans-serif;letter-spacing:.12em;color:var(--ox);text-transform:uppercase}
+.tag{font:700 10px/1 Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--green);border:1px solid #9cae9e;padding:5px 7px}
+.prompt-en{font-size:16px;margin:0 0 8px}
+.prompt-vn{font-size:14px;color:#625d55;margin:0;padding-left:12px;border-left:3px solid #d5c8b5}
+.reveal{
+  display:none;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)
+}
+.reveal.show{display:block}
+.term{font-size:22px;font-weight:700;color:var(--ox)}
+.meaning{font-size:14px;color:var(--green);font-weight:700}
+.model{margin-top:7px;font-size:14px}
+.case-actions{margin-top:14px;display:flex;gap:8px}
+.mini{
+  border:1px solid var(--line);background:#f8f2e7;color:var(--navy);padding:7px 9px;
+  font:700 11px/1 Arial,sans-serif;text-transform:uppercase;letter-spacing:.04em
+}
+.match-shell,.blank-shell{background:var(--paper2);border:1px solid var(--line);padding:18px;box-shadow:var(--shadow)}
+.round-title{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:12px}
+.round-title strong{color:var(--navy)}
+.match-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.column-title{font:700 11px/1 Arial,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.draggable,.dropzone{
+  border:1px solid var(--line);background:#fbf7ef;padding:10px 12px;margin:7px 0;min-height:48px;display:flex;align-items:center;
+}
+.draggable{font-weight:700;color:var(--navy);cursor:grab}
+.draggable.selected{outline:3px solid rgba(169,133,67,.35);border-color:var(--gold)}
+.draggable.done{opacity:.35;text-decoration:line-through;cursor:default}
+.dropzone{font-size:14px;color:#514c45;position:relative;padding-right:95px}
+.dropzone.correct{border-color:#7e9d86;background:#f0f6ef}
+.dropzone.wrong{animation:shake .24s linear 2;border-color:#b66f70}
+.dropzone .placed{position:absolute;right:8px;top:50%;transform:translateY(-50%);max-width:42%;font:700 11px/1.15 Arial,sans-serif;color:var(--green);text-align:right}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.scorebox{font:700 12px/1 Arial,sans-serif;color:var(--ox)}
+.blank-card{max-width:820px;margin:auto}
+.blank-count{font:700 11px/1 Arial,sans-serif;letter-spacing:.12em;color:var(--ox);text-transform:uppercase}
+.blank-sentence{font-size:24px;line-height:1.35;margin:14px 0}
+.clue{color:var(--green);font-weight:700;margin-bottom:10px}
+.answer-row{display:flex;gap:8px}
+.answer-row input{flex:1;min-width:0;border:1px solid var(--line);background:white;padding:12px 13px;outline:none}
+.answer-row input:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(34,58,83,.1)}
+.feedback{min-height:28px;margin-top:10px;font-weight:700}
+.feedback.ok{color:var(--green)} .feedback.no{color:var(--ox)}
+.bank{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.bank button{border:1px solid var(--line);background:#f6efe3;padding:6px 8px;font-size:12px;color:var(--navy)}
+.footer{margin-top:34px;border-top:1px solid var(--line);padding-top:14px;color:var(--muted);font-size:12px}
+.hidden{display:none!important}
+.note-card{background:#efe7d8;border-left:5px solid var(--gold);padding:12px 14px;margin:12px 0;font-size:14px}
+@media(max-width:780px){
+  .case-grid,.match-grid{grid-template-columns:1fr}
+  .masthead{padding:22px 20px}
+  .case{min-height:auto}
+  .blank-sentence{font-size:20px}
+  .navbar{position:static}
+  .dropzone{padding-right:12px;padding-bottom:30px}
+  .dropzone .placed{top:auto;bottom:7px;right:10px;transform:none;max-width:80%}
+}
+@media print{
+  .navbar,.btn,.mini,.answer-row,.bank{display:none!important}
+  body{background:white}.case-grid{display:block}.case{break-inside:avoid;margin-bottom:12px}
+  .reveal{display:block}.masthead,.case,.match-shell,.blank-shell{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="masthead">
+  <div class="kicker">Cambridge Collocation Dossier · Set 01</div>
+  <h1>Academic Collocations<br>Field Drilling</h1>
+  <p class="subtitle">50 target collocations · bilingual situation decoding · meaning match · active recall.</p>
+  <div class="meta">
+    <span class="badge">Source order: 01–50</span>
+    <span class="badge">EN ↔ VI</span>
+    <span class="badge">No external resources</span>
+    <span class="badge">Self-checking</span>
+  </div>
+  <div class="progressline"><span id="globalProgress"></span></div>
+</header>
+
+<nav class="navbar">
+  <a href="#cases">01 · Case Files</a>
+  <a href="#matching">02 · Match Meanings</a>
+  <a href="#blanks">03 · Fill Blanks</a>
+  <button id="resetAll">Reset progress</button>
+</nav>
+
+<section id="cases" class="section">
+  <div class="section-head">
+    <div class="section-num">01</div>
+    <div><h2>Bilingual Case Files</h2><p class="section-note">Đọc tình huống trước. Tự gọi collocation trong đầu, sau đó mới Reveal.</p></div>
+  </div>
+  <div class="case-toolbar">
+    <button class="btn" id="revealAll">Reveal all</button>
+    <button class="btn secondary" id="hideAll">Hide all</button>
+    <span class="scorebox" id="caseScore">Revealed 0/50</span>
+  </div>
+  <div class="case-grid" id="caseGrid"></div>
+</section>
+
+<section id="matching" class="section">
+  <div class="section-head">
+    <div class="section-num">02</div>
+    <div><h2>Two-Column Meaning Match</h2><p class="section-note">Kéo collocation sang nghĩa đúng. Trên điện thoại: chạm collocation → chạm nghĩa.</p></div>
+  </div>
+  <div class="note-card">Mỗi round có 10 mục để hai cột không quá dài. Đáp án đúng được khóa lại; đáp án sai chỉ rung, không trừ điểm.</div>
+  <div class="match-shell">
+    <div class="round-title"><strong id="roundLabel">Round 1 / 5</strong><span class="scorebox" id="matchScore">0/10 matched</span></div>
+    <div class="match-grid">
+      <div><div class="column-title">Collocations</div><div id="dragCol"></div></div>
+      <div><div class="column-title">Vietnamese meanings</div><div id="dropCol"></div></div>
+    </div>
+    <div class="match-toolbar">
+      <button class="btn secondary" id="prevRound">Back</button>
+      <button class="btn" id="nextRound">Next</button>
+      <button class="btn secondary" id="resetRound">Reset round</button>
+    </div>
+  </div>
+</section>
+
+<section id="blanks" class="section">
+  <div class="section-head">
+    <div class="section-num">03</div>
+    <div><h2>Full-Collocation Recall</h2><p class="section-note">Gõ toàn bộ collocation. Có nghĩa tiếng Việt làm semantic cue, nhưng không hiện đáp án trước.</p></div>
+  </div>
+  <div class="blank-shell">
+    <div class="blank-card">
+      <div class="blank-count" id="blankCount">Item 1 / 50</div>
+      <div class="blank-sentence" id="blankSentence"></div>
+      <div class="clue" id="blankClue"></div>
+      <div class="answer-row">
+        <input id="blankInput" autocomplete="off" spellcheck="false" placeholder="Type the full collocation…">
+        <button class="btn" id="checkBlank">Check</button>
+      </div>
+      <div class="feedback" id="blankFeedback"></div>
+      <div class="bank" id="miniBank"></div>
+      <div class="blank-toolbar">
+        <button class="btn secondary" id="prevBlank">Back</button>
+        <button class="btn secondary" id="skipBlank">Skip</button>
+        <button class="btn ox" id="showBlank">Show answer</button>
+        <button class="btn" id="nextBlank">Next</button>
+        <span class="scorebox" id="blankScore">Correct 0/50</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="footer">Cambridge-style dossier · Set 01 · 50 collocations preserved in source order. Progress is stored locally in this browser.</div>
+</div>
+
+<script>
+const ITEMS = [{"term": "cognitive ability", "vn": "khả năng nhận thức", "case_en": "After several months of training, the researchers measured whether the children’s memory, reasoning, and problem-solving had improved.", "case_vn": "Sau vài tháng rèn luyện, các nhà nghiên cứu đo xem trí nhớ, khả năng suy luận và giải quyết vấn đề của trẻ có cải thiện hay không.", "use_en": "The study examines how sleep quality may affect <b>cognitive ability</b> in teenagers.", "blank": "The test was designed to measure students’ ________, especially memory and reasoning.", "answers": ["cognitive ability"]}, {"term": "wider context", "vn": "bối cảnh rộng hơn / toàn cảnh rộng hơn", "case_en": "A single statistic can be misleading, so the lecturer asks students to look at the social and historical background around it.", "case_vn": "Một con số riêng lẻ có thể gây hiểu lầm, vì vậy giảng viên yêu cầu sinh viên xem xét cả nền tảng xã hội và lịch sử xung quanh nó.", "use_en": "The figure should be interpreted within a <b>wider context</b>.", "blank": "The finding makes more sense when viewed in a ________.", "answers": ["wider context"]}, {"term": "provide (a) foundation", "vn": "tạo / cung cấp nền tảng", "case_en": "Basic literacy learned in primary school makes later academic study possible.", "case_vn": "Kỹ năng đọc viết cơ bản ở tiểu học tạo tiền đề để việc học thuật ở các cấp sau trở nên khả thi.", "use_en": "Early literacy can <b>provide a foundation</b> for later academic success.", "blank": "Strong reading habits can ________ for later academic study.", "answers": ["provide a foundation", "provide foundation"]}, {"term": "sexual abuse", "vn": "xâm hại tình dục", "case_en": "The safeguarding course teaches staff how to recognise and report inappropriate sexual behaviour toward a child.", "case_vn": "Khóa học bảo vệ trẻ em hướng dẫn nhân viên cách nhận biết và báo cáo hành vi tình dục không phù hợp nhắm vào trẻ.", "use_en": "Staff are trained to recognise possible signs of <b>sexual abuse</b>.", "blank": "Teachers receive safeguarding training to identify signs of ________.", "answers": ["sexual abuse"]}, {"term": "marked contrast", "vn": "sự tương phản rõ rệt / đáng chú ý", "case_en": "The report notes a clearly noticeable difference between rural and urban employment patterns.", "case_vn": "Báo cáo ghi nhận sự khác biệt rõ rệt giữa mô hình việc làm ở nông thôn và thành thị.", "use_en": "There is a <b>marked contrast</b> between rural and urban employment patterns.", "blank": "The report shows a ________ between rural and urban employment patterns.", "answers": ["marked contrast"]}, {"term": "small fraction", "vn": "một phần / tỷ lệ rất nhỏ", "case_en": "Only 3% of respondents chose the final option.", "case_vn": "Chỉ 3% người tham gia khảo sát chọn phương án cuối cùng.", "use_en": "Only a <b>small fraction</b> of respondents selected the final option.", "blank": "Only a ________ of participants selected the final option.", "answers": ["small fraction"]}, {"term": "socially acceptable", "vn": "được xã hội chấp nhận", "case_en": "The behaviour is legal, but people still ask whether it is considered appropriate by society.", "case_vn": "Hành vi này hợp pháp, nhưng mọi người vẫn đặt câu hỏi liệu nó có được xã hội coi là phù hợp hay không.", "use_en": "Attitudes toward what is <b>socially acceptable</b> can change over time.", "blank": "Ideas about what is ________ may change across cultures.", "answers": ["socially acceptable"]}, {"term": "sharp contrast", "vn": "sự tương phản mạnh / rõ ràng", "case_en": "One district has rapidly rising incomes, while the neighbouring district is experiencing a steep decline.", "case_vn": "Một quận có thu nhập tăng nhanh, trong khi quận lân cận lại sụt giảm mạnh.", "use_en": "The two districts show a <b>sharp contrast</b> in income trends.", "blank": "There is a ________ between the two regions’ income trends.", "answers": ["sharp contrast"]}, {"term": "conceptual framework", "vn": "khung khái niệm", "case_en": "Before collecting data, the research team maps the key concepts and explains how those ideas relate to one another.", "case_vn": "Trước khi thu thập dữ liệu, nhóm nghiên cứu xác định các khái niệm chính và giải thích mối quan hệ giữa chúng.", "use_en": "The study begins by developing a <b>conceptual framework</b>.", "blank": "The researcher developed a ________ linking the study’s key concepts.", "answers": ["conceptual framework"]}, {"term": "widespread acceptance", "vn": "sự chấp nhận rộng rãi", "case_en": "The new idea was once disputed, but it is now supported by most researchers in the field.", "case_vn": "Ý tưởng mới từng gây tranh cãi, nhưng hiện nay đã được phần lớn các nhà nghiên cứu trong lĩnh vực ủng hộ.", "use_en": "The theory has gained <b>widespread acceptance</b>.", "blank": "The approach has gained ________ among specialists.", "answers": ["widespread acceptance"]}, {"term": "stark contrast", "vn": "sự tương phản cực kỳ rõ / hoàn toàn đối lập", "case_en": "The luxury development stands beside an area with severe poverty, making the difference impossible to ignore.", "case_vn": "Khu phát triển cao cấp nằm ngay cạnh một khu vực nghèo nghiêm trọng, khiến sự khác biệt gần như không thể bỏ qua.", "use_en": "The two neighbourhoods stand in <b>stark contrast</b>.", "blank": "The wealth of one area stands in ________ to the poverty next door.", "answers": ["stark contrast"]}, {"term": "institutional framework", "vn": "khung thể chế / khuôn khổ thể chế", "case_en": "The policy can work only if organisations, responsibilities, and formal procedures are clearly established.", "case_vn": "Chính sách chỉ có thể vận hành nếu các tổ chức, trách nhiệm và quy trình chính thức được xác lập rõ ràng.", "use_en": "Effective reform requires a strong <b>institutional framework</b>.", "blank": "Successful reform depends on a stable ________.", "answers": ["institutional framework"]}, {"term": "commonly accepted", "vn": "được chấp nhận phổ biến", "case_en": "Most people in the profession treat this definition as standard, although a few alternatives exist.", "case_vn": "Hầu hết người trong ngành xem định nghĩa này là chuẩn, dù vẫn tồn tại một vài cách định nghĩa khác.", "use_en": "This is the most <b>commonly accepted</b> definition.", "blank": "This is the most ________ definition in the profession.", "answers": ["commonly accepted"]}, {"term": "striking contrast", "vn": "sự tương phản nổi bật / gây ấn tượng mạnh", "case_en": "The photographs make the difference between the city before and after redevelopment visually dramatic.", "case_vn": "Các bức ảnh làm cho sự khác biệt của thành phố trước và sau tái phát triển trở nên đặc biệt nổi bật về mặt thị giác.", "use_en": "The photographs reveal a <b>striking contrast</b>.", "blank": "The before-and-after images reveal a ________.", "answers": ["striking contrast"]}, {"term": "legal framework", "vn": "khung pháp lý", "case_en": "Companies need a clear body of laws and rules governing how personal data may be collected and used.", "case_vn": "Doanh nghiệp cần một hệ thống luật và quy định rõ ràng về cách dữ liệu cá nhân được thu thập và sử dụng.", "use_en": "A clear <b>legal framework</b> is needed for data protection.", "blank": "A clear ________ is necessary to protect personal data.", "answers": ["legal framework"]}, {"term": "generally accepted", "vn": "nhìn chung được chấp nhận", "case_en": "The claim is supported by most specialists, even though complete agreement has not been reached.", "case_vn": "Nhận định này được phần lớn chuyên gia ủng hộ, dù chưa đạt được sự đồng thuận tuyệt đối.", "use_en": "It is <b>generally accepted</b> that early intervention is beneficial.", "blank": "It is ________ that prevention is better than late intervention.", "answers": ["generally accepted"]}, {"term": "major contribution", "vn": "đóng góp lớn / quan trọng", "case_en": "One research paper changed how the field understands the problem and influenced many later studies.", "case_vn": "Một bài nghiên cứu đã thay đổi cách lĩnh vực này hiểu vấn đề và ảnh hưởng đến nhiều nghiên cứu sau đó.", "use_en": "The paper made a <b>major contribution</b> to the field.", "blank": "Her research made a ________ to our understanding of the topic.", "answers": ["major contribution"]}, {"term": "regulatory framework", "vn": "khung quản lý / khuôn khổ quy định", "case_en": "The industry needs coordinated rules, standards, and oversight mechanisms to control professional practice.", "case_vn": "Ngành này cần các quy tắc, tiêu chuẩn và cơ chế giám sát thống nhất để kiểm soát hoạt động nghề nghiệp.", "use_en": "The government introduced a new <b>regulatory framework</b>.", "blank": "The sector operates under a new ________.", "answers": ["regulatory framework"]}, {"term": "universally accepted", "vn": "được chấp nhận một cách phổ quát / gần như tuyệt đối", "case_en": "The principle is recognised across countries and professional communities with almost no serious disagreement.", "case_vn": "Nguyên tắc này được công nhận ở nhiều quốc gia và cộng đồng chuyên môn, hầu như không có bất đồng đáng kể.", "use_en": "The principle is now <b>universally accepted</b>.", "blank": "The principle is now ________ across almost all major institutions.", "answers": ["universally accepted"]}, {"term": "make (a) contribution", "vn": "đóng góp", "case_en": "Every member of the group is expected to add something useful to the final project.", "case_vn": "Mỗi thành viên trong nhóm được kỳ vọng đóng góp một phần hữu ích cho dự án cuối cùng.", "use_en": "Each student should <b>make a contribution</b> to the project.", "blank": "Every member should ________ to the group project.", "answers": ["make a contribution", "make contribution"]}, {"term": "theoretical framework", "vn": "khung lý thuyết", "case_en": "The thesis uses established theories to explain why the variables may be related.", "case_vn": "Luận văn sử dụng các lý thuyết đã có để giải thích vì sao các biến có thể liên quan với nhau.", "use_en": "The hypotheses are grounded in a <b>theoretical framework</b>.", "blank": "The hypotheses were developed from a strong ________.", "answers": ["theoretical framework"]}, {"term": "widely accepted", "vn": "được chấp nhận rộng rãi", "case_en": "Researchers in many countries regard the method as reliable and use it routinely.", "case_vn": "Các nhà nghiên cứu ở nhiều quốc gia xem phương pháp này là đáng tin cậy và sử dụng nó thường xuyên.", "use_en": "The method is <b>widely accepted</b> in the field.", "blank": "This method is ________ by researchers in many countries.", "answers": ["widely accepted"]}, {"term": "significant contribution", "vn": "đóng góp đáng kể", "case_en": "The new dataset meaningfully improves what researchers know, although it does not transform the entire field.", "case_vn": "Bộ dữ liệu mới cải thiện đáng kể hiểu biết của giới nghiên cứu, dù chưa làm thay đổi toàn bộ lĩnh vực.", "use_en": "The dataset represents a <b>significant contribution</b> to current research.", "blank": "The new dataset makes a ________ to current research.", "answers": ["significant contribution"]}, {"term": "religious freedom", "vn": "tự do tôn giáo", "case_en": "Citizens are allowed to practise, change, or decline a religion without unfair punishment.", "case_vn": "Công dân được phép thực hành, thay đổi hoặc không theo tôn giáo mà không bị trừng phạt bất công.", "use_en": "The constitution protects <b>religious freedom</b>.", "blank": "The constitution guarantees ________.", "answers": ["religious freedom"]}, {"term": "allow access", "vn": "cho phép truy cập / tiếp cận", "case_en": "The administrator changes the settings so students can open the digital archive.", "case_vn": "Quản trị viên thay đổi cài đặt để sinh viên có thể mở kho lưu trữ số.", "use_en": "The new settings <b>allow access</b> to the digital archive.", "blank": "The settings ________ to the digital archive.", "answers": ["allow access"]}, {"term": "central control", "vn": "sự kiểm soát tập trung", "case_en": "All important decisions are made by one national office rather than by local branches.", "case_vn": "Mọi quyết định quan trọng đều do một cơ quan trung ương đưa ra thay vì các chi nhánh địa phương.", "use_en": "The system relies on strong <b>central control</b>.", "blank": "The old system depended on strong ________ from the national office.", "answers": ["central control"]}, {"term": "high/er frequency", "vn": "tần suất cao / tần suất cao hơn", "case_en": "The event occurs many times in the dataset; in the second group it occurs even more often than in the first.", "case_vn": "Sự kiện xuất hiện nhiều lần trong bộ dữ liệu; ở nhóm thứ hai, nó còn xuất hiện thường xuyên hơn nhóm thứ nhất.", "use_en": "The behaviour occurs at a <b>high frequency</b>, with an even <b>higher frequency</b> in the second group.", "blank": "The behaviour appears with a ________ in the younger group.", "answers": ["high frequency", "higher frequency"]}, {"term": "deny access", "vn": "từ chối / ngăn quyền truy cập", "case_en": "The system blocks a user because the account does not have the required permission.", "case_vn": "Hệ thống chặn người dùng vì tài khoản không có quyền cần thiết.", "use_en": "The server may <b>deny access</b> to unauthorised users.", "blank": "The server can ________ when a user lacks permission.", "answers": ["deny access"]}, {"term": "government control", "vn": "sự kiểm soát của chính phủ", "case_en": "A state agency directly regulates prices, licensing, and major operating decisions in the sector.", "case_vn": "Một cơ quan nhà nước trực tiếp quản lý giá, cấp phép và các quyết định vận hành lớn trong lĩnh vực này.", "use_en": "The sector remains under extensive <b>government control</b>.", "blank": "Prices remained under strict ________.", "answers": ["government control"]}, {"term": "low/er frequency", "vn": "tần suất thấp / tần suất thấp hơn", "case_en": "The behaviour is rare in the sample and becomes even less common in the older age group.", "case_vn": "Hành vi này hiếm gặp trong mẫu và còn ít xuất hiện hơn ở nhóm tuổi lớn hơn.", "use_en": "The behaviour occurs at a <b>low frequency</b>, with a <b>lower frequency</b> among older participants.", "blank": "The behaviour occurs with a ________ among older participants.", "answers": ["low frequency", "lower frequency"]}, {"term": "direct access", "vn": "quyền truy cập / tiếp cận trực tiếp", "case_en": "Researchers can open the raw database themselves without going through an intermediary.", "case_vn": "Nhà nghiên cứu có thể tự mở cơ sở dữ liệu thô mà không cần qua một bên trung gian.", "use_en": "Researchers have <b>direct access</b> to the raw database.", "blank": "Researchers have ________ to the raw files.", "answers": ["direct access"]}, {"term": "internal control", "vn": "kiểm soát nội bộ", "case_en": "A company uses internal checks and procedures to reduce errors and prevent misuse of funds.", "case_vn": "Doanh nghiệp sử dụng các bước kiểm tra và quy trình nội bộ để giảm sai sót và ngăn việc sử dụng sai nguồn tiền.", "use_en": "Strong <b>internal control</b> can reduce financial risk.", "blank": "Better ________ can reduce errors and fraud inside an organisation.", "answers": ["internal control"]}, {"term": "occur frequently", "vn": "xảy ra thường xuyên", "case_en": "The same type of error appears again and again in student essays.", "case_vn": "Cùng một loại lỗi xuất hiện lặp đi lặp lại trong bài luận của sinh viên.", "use_en": "These errors <b>occur frequently</b> in early drafts.", "blank": "These mistakes ________ in early student writing.", "answers": ["occur frequently"]}, {"term": "easy access", "vn": "khả năng tiếp cận dễ dàng", "case_en": "Students can reach the online materials quickly from any device with very few steps.", "case_vn": "Sinh viên có thể truy cập tài liệu trực tuyến nhanh chóng từ bất kỳ thiết bị nào chỉ với rất ít thao tác.", "use_en": "The platform gives students <b>easy access</b> to learning materials.", "blank": "The portal offers ________ to course materials.", "answers": ["easy access"]}, {"term": "personal control", "vn": "quyền / khả năng tự kiểm soát cá nhân", "case_en": "Users can decide for themselves which notifications they receive and how their profile is displayed.", "case_vn": "Người dùng có thể tự quyết định nhận thông báo nào và hồ sơ của họ được hiển thị ra sao.", "use_en": "The settings give users greater <b>personal control</b>.", "blank": "The new settings give users more ________ over notifications.", "answers": ["personal control"]}, {"term": "basic function", "vn": "chức năng cơ bản", "case_en": "The simplest job of the device is to record and store temperature readings.", "case_vn": "Nhiệm vụ đơn giản nhất của thiết bị là ghi và lưu các chỉ số nhiệt độ.", "use_en": "Its <b>basic function</b> is to record temperature.", "blank": "The device’s ________ is to record temperature.", "answers": ["basic function"]}, {"term": "electronic access", "vn": "truy cập điện tử", "case_en": "Journal articles can be opened digitally through the university library rather than collected in print.", "case_vn": "Các bài báo học thuật có thể được mở dưới dạng số thông qua thư viện đại học thay vì lấy bản in.", "use_en": "Students receive <b>electronic access</b> to the journal.", "blank": "The library provides ________ to the journal collection.", "answers": ["electronic access"]}, {"term": "carefully controlled", "vn": "được kiểm soát cẩn thận / chặt chẽ", "case_en": "During the experiment, temperature, light, and timing are monitored closely to prevent unwanted variation.", "case_vn": "Trong thí nghiệm, nhiệt độ, ánh sáng và thời gian được giám sát kỹ để tránh biến động không mong muốn.", "use_en": "The experimental conditions are <b>carefully controlled</b>.", "blank": "All experimental conditions were ________.", "answers": ["carefully controlled"]}, {"term": "essential function", "vn": "chức năng thiết yếu", "case_en": "Without this process, the system cannot continue operating safely.", "case_vn": "Nếu thiếu quy trình này, hệ thống không thể tiếp tục vận hành an toàn.", "use_en": "Safety monitoring performs an <b>essential function</b>.", "blank": "Safety monitoring performs an ________ in the system.", "answers": ["essential function"]}, {"term": "equal access", "vn": "quyền tiếp cận bình đẳng", "case_en": "The policy aims to ensure that rural and urban students can use the same educational resources.", "case_vn": "Chính sách hướng tới việc bảo đảm học sinh nông thôn và thành thị có thể sử dụng các nguồn lực giáo dục như nhau.", "use_en": "The policy promotes <b>equal access</b> to education.", "blank": "The policy aims to guarantee ________ to education.", "answers": ["equal access"]}, {"term": "tightly controlled", "vn": "được kiểm soát rất chặt", "case_en": "Only authorised staff can enter the laboratory, and every movement of the material is recorded.", "case_vn": "Chỉ nhân viên được ủy quyền mới có thể vào phòng thí nghiệm và mọi lần di chuyển vật liệu đều được ghi lại.", "use_en": "Access to the laboratory is <b>tightly controlled</b>.", "blank": "Entry to the laboratory is ________.", "answers": ["tightly controlled"]}, {"term": "main function", "vn": "chức năng chính", "case_en": "Although the app has many features, its most important purpose is to organise research notes.", "case_vn": "Mặc dù ứng dụng có nhiều tính năng, mục đích quan trọng nhất của nó là sắp xếp ghi chú nghiên cứu.", "use_en": "The app’s <b>main function</b> is to organise research notes.", "blank": "The app’s ________ is to organise notes.", "answers": ["main function"]}, {"term": "free access", "vn": "quyền truy cập miễn phí / tự do", "case_en": "Anyone can read the database without paying a subscription fee.", "case_vn": "Bất kỳ ai cũng có thể đọc cơ sở dữ liệu mà không phải trả phí thuê bao.", "use_en": "The website provides <b>free access</b> to the database.", "blank": "The archive offers ________ to all users.", "answers": ["free access"]}, {"term": "highly controversial", "vn": "gây tranh cãi lớn", "case_en": "The proposal has generated strong disagreement among experts, politicians, and the public.", "case_vn": "Đề xuất này tạo ra bất đồng mạnh giữa giới chuyên gia, chính trị gia và công chúng.", "use_en": "The proposal remains <b>highly controversial</b>.", "blank": "The proposal remains ________ and continues to divide opinion.", "answers": ["highly controversial"]}, {"term": "perform (a) function", "vn": "thực hiện / đảm nhiệm một chức năng", "case_en": "In the model, this variable has a specific job: it connects the input stage to the final outcome.", "case_vn": "Trong mô hình, biến này có một nhiệm vụ cụ thể: kết nối giai đoạn đầu vào với kết quả cuối cùng.", "use_en": "The variable <b>performs a function</b> within the model.", "blank": "Within this model, the variable must ________.", "answers": ["perform a function", "perform function", "performs a function", "performs function"]}, {"term": "gain access", "vn": "có được quyền truy cập / tiếp cận", "case_en": "After receiving approval, the research team is finally able to enter the restricted archive.", "case_vn": "Sau khi được phê duyệt, nhóm nghiên cứu cuối cùng có thể vào kho lưu trữ hạn chế.", "use_en": "The team <b>gained access</b> to the restricted archive.", "blank": "The team finally managed to ________ to the restricted archive.", "answers": ["gain access", "gained access"]}, {"term": "central core", "vn": "phần lõi trung tâm / cốt lõi", "case_en": "The theory contains many supporting ideas, but one principle sits at the heart of the entire argument.", "case_vn": "Lý thuyết có nhiều ý tưởng hỗ trợ, nhưng một nguyên tắc nằm ở vị trí cốt lõi của toàn bộ lập luận.", "use_en": "This principle forms the <b>central core</b> of the theory.", "blank": "That principle forms the ________ of the theory.", "answers": ["central core"]}, {"term": "primary function", "vn": "chức năng chủ yếu / chức năng hàng đầu", "case_en": "The institution performs several tasks, but its first and most important role is to regulate professional standards.", "case_vn": "Tổ chức thực hiện nhiều nhiệm vụ, nhưng vai trò đầu tiên và quan trọng nhất là điều chỉnh các tiêu chuẩn nghề nghiệp.", "use_en": "Its <b>primary function</b> is to regulate professional standards.", "blank": "Its ________ is to regulate professional standards.", "answers": ["primary function"]}, {"term": "give access", "vn": "cấp / cho quyền truy cập", "case_en": "The librarian activates the account so the student can use the subscription database.", "case_vn": "Thủ thư kích hoạt tài khoản để sinh viên có thể sử dụng cơ sở dữ liệu trả phí.", "use_en": "The account will <b>give access</b> to the subscription database.", "blank": "The new account will ________ to the subscription database.", "answers": ["give access"]}, {"term": "politically correct", "vn": "phù hợp với chuẩn mực ngôn ngữ / ứng xử nhạy cảm về chính trị - xã hội", "case_en": "A public organisation revises its wording to avoid language that may unnecessarily offend or marginalise groups.", "case_vn": "Một tổ chức công sửa lại cách diễn đạt để tránh ngôn ngữ có thể gây xúc phạm hoặc gạt các nhóm người ra bên lề một cách không cần thiết.", "use_en": "The organisation chose more <b>politically correct</b> language.", "blank": "The organisation replaced the phrase with more ________ wording.", "answers": ["politically correct"]}];
+const state = JSON.parse(localStorage.getItem("collocDossierSet01") || '{"revealed":[],"matched":{},"blankCorrect":[]}');
+state.revealed = Array.isArray(state.revealed) ? state.revealed : [];
+state.matched = state.matched || {};
+state.blankCorrect = Array.isArray(state.blankCorrect) ? state.blankCorrect : [];
+function save(){localStorage.setItem("collocDossierSet01", JSON.stringify(state)); updateGlobal();}
+function esc(s){return s.replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#039;"}[m]));}
+function normalize(s){
+  return s.toLowerCase()
+    .replace(/[’']/g,"'")
+    .replace(/\(a\)/g,"a")
+    .replace(/[\/]/g," ")
+    .replace(/[^a-z0-9\s]/g," ")
+    .replace(/\s+/g," ").trim();
+}
+function updateGlobal(){
+  const r=new Set(state.revealed).size/50;
+  const m=Object.values(state.matched).filter(Boolean).length/50;
+  const b=new Set(state.blankCorrect).size/50;
+  const pct=Math.round(((r+m+b)/3)*100);
+  document.getElementById("globalProgress").style.width=pct+"%";
+}
+
+/* CASE FILES */
+const caseGrid=document.getElementById("caseGrid");
+function renderCases(){
+  caseGrid.innerHTML=ITEMS.map((it,i)=>{
+    const shown=state.revealed.includes(i);
+    return `<article class="case">
+      <div class="case-top"><span class="case-no">Case ${String(i+1).padStart(2,"0")}</span><span class="tag">Context → Collocation</span></div>
+      <p class="prompt-en">${esc(it.case_en)}</p>
+      <p class="prompt-vn">${esc(it.case_vn)}</p>
+      <div class="reveal ${shown?"show":""}" id="reveal-${i}">
+        <div class="term">${esc(it.term)}</div>
+        <div class="meaning">${esc(it.vn)}</div>
+        <div class="model">${it.use_en}</div>
+      </div>
+      <div class="case-actions"><button class="mini" onclick="toggleReveal(${i})">${shown?"Hide":"Reveal collocation"}</button></div>
+    </article>`;
+  }).join("");
+  document.getElementById("caseScore").textContent=`Revealed ${new Set(state.revealed).size}/50`;
+}
+window.toggleReveal=function(i){
+  const p=state.revealed.indexOf(i);
+  if(p>=0) state.revealed.splice(p,1); else state.revealed.push(i);
+  save(); renderCases();
+}
+document.getElementById("revealAll").onclick=()=>{state.revealed=[...Array(50).keys()];save();renderCases();}
+document.getElementById("hideAll").onclick=()=>{state.revealed=[];save();renderCases();}
+
+/* MATCHING */
+let round=0, selected=null;
+function hashShuffle(arr,seed){
+  const a=[...arr]; let x=seed+17;
+  for(let i=a.length-1;i>0;i--){x=(x*9301+49297)%233280;const j=Math.floor((x/233280)*(i+1));[a[i],a[j]]=[a[j],a[i]];}
+  return a;
+}
+function currentIndices(){return [...Array(10).keys()].map(k=>round*10+k);}
+function renderMatch(){
+  selected=null;
+  const inds=currentIndices(), left=hashShuffle(inds,101+round), right=hashShuffle(inds,811+round);
+  document.getElementById("roundLabel").textContent=`Round ${round+1} / 5`;
+  document.getElementById("dragCol").innerHTML=left.map(i=>{
+    const done=!!state.matched[i];
+    return `<div class="draggable ${done?"done":""}" data-id="${i}" draggable="${done?"false":"true"}">${esc(ITEMS[i].term)}</div>`;
+  }).join("");
+  document.getElementById("dropCol").innerHTML=right.map(i=>{
+    const done=!!state.matched[i];
+    return `<div class="dropzone ${done?"correct":""}" data-id="${i}">
+      ${esc(ITEMS[i].vn)} ${done?`<span class="placed">${esc(ITEMS[i].term)}</span>`:""}
+    </div>`;
+  }).join("");
+  bindMatch();
+  const count=inds.filter(i=>state.matched[i]).length;
+  document.getElementById("matchScore").textContent=`${count}/10 matched`;
+  document.getElementById("prevRound").disabled=round===0;
+  document.getElementById("nextRound").textContent=round===4?"Round 1":"Next";
+}
+function tryMatch(sourceId,zone){
+  const targetId=Number(zone.dataset.id);
+  document.querySelectorAll(".dropzone").forEach(z=>z.classList.remove("wrong"));
+  if(Number(sourceId)===targetId){
+    state.matched[targetId]=true; save(); renderMatch();
+  }else{
+    zone.classList.add("wrong");
+    setTimeout(()=>zone.classList.remove("wrong"),550);
+  }
+}
+function bindMatch(){
+  document.querySelectorAll(".draggable:not(.done)").forEach(el=>{
+    el.addEventListener("dragstart",e=>e.dataTransfer.setData("text/plain",el.dataset.id));
+    el.addEventListener("click",()=>{
+      document.querySelectorAll(".draggable").forEach(x=>x.classList.remove("selected"));
+      if(selected===el.dataset.id){selected=null;return;}
+      selected=el.dataset.id;el.classList.add("selected");
+    });
+  });
+  document.querySelectorAll(".dropzone:not(.correct)").forEach(z=>{
+    z.addEventListener("dragover",e=>e.preventDefault());
+    z.addEventListener("drop",e=>{e.preventDefault();tryMatch(e.dataTransfer.getData("text/plain"),z);});
+    z.addEventListener("click",()=>{if(selected!==null) tryMatch(selected,z);});
+  });
+}
+document.getElementById("prevRound").onclick=()=>{round=Math.max(0,round-1);renderMatch();}
+document.getElementById("nextRound").onclick=()=>{round=round===4?0:round+1;renderMatch();}
+document.getElementById("resetRound").onclick=()=>{currentIndices().forEach(i=>delete state.matched[i]);save();renderMatch();}
+
+/* BLANKS */
+let blankIndex=0;
+function acceptedFor(it){return it.answers.map(normalize);}
+function renderBlank(){
+  const it=ITEMS[blankIndex];
+  document.getElementById("blankCount").textContent=`Item ${blankIndex+1} / 50`;
+  document.getElementById("blankSentence").innerHTML=it.blank.replace("________","<span style='color:#7b2f36;border-bottom:2px solid #7b2f36;padding:0 14px'>________</span>");
+  document.getElementById("blankClue").textContent=`VI cue: ${it.vn}`;
+  document.getElementById("blankInput").value="";
+  document.getElementById("blankFeedback").textContent="";
+  document.getElementById("blankFeedback").className="feedback";
+  const nearby=[blankIndex,(blankIndex+7)%50,(blankIndex+19)%50,(blankIndex+31)%50];
+  const choices=hashShuffle([...new Set(nearby)],301+blankIndex);
+  document.getElementById("miniBank").innerHTML=choices.map(i=>`<button type="button" onclick="useBank(${i})">${esc(ITEMS[i].term)}</button>`).join("");
+  document.getElementById("blankScore").textContent=`Correct ${new Set(state.blankCorrect).size}/50`;
+  document.getElementById("prevBlank").disabled=blankIndex===0;
+}
+window.useBank=function(i){document.getElementById("blankInput").value=ITEMS[i].term.replace(/\(a\)/g,"a").replace("high/er","high").replace("low/er","low");document.getElementById("blankInput").focus();}
+function checkBlank(){
+  const it=ITEMS[blankIndex], val=normalize(document.getElementById("blankInput").value);
+  const fb=document.getElementById("blankFeedback");
+  if(acceptedFor(it).includes(val)){
+    if(!state.blankCorrect.includes(blankIndex)) state.blankCorrect.push(blankIndex);
+    save(); fb.className="feedback ok"; fb.textContent=`Correct — ${it.term} = ${it.vn}`;
+    document.getElementById("blankScore").textContent=`Correct ${new Set(state.blankCorrect).size}/50`;
+  } else {
+    fb.className="feedback no"; fb.textContent="Not yet. Check the Vietnamese cue and the exact collocation pattern.";
+  }
+}
+document.getElementById("checkBlank").onclick=checkBlank;
+document.getElementById("blankInput").addEventListener("keydown",e=>{if(e.key==="Enter") checkBlank();});
+document.getElementById("showBlank").onclick=()=>{
+  const it=ITEMS[blankIndex],fb=document.getElementById("blankFeedback");
+  fb.className="feedback";fb.innerHTML=`Answer: <b>${esc(it.term)}</b> — ${esc(it.vn)}`;
+};
+document.getElementById("prevBlank").onclick=()=>{blankIndex=Math.max(0,blankIndex-1);renderBlank();document.getElementById("blanks").scrollIntoView({behavior:"smooth"});}
+document.getElementById("nextBlank").onclick=()=>{blankIndex=(blankIndex+1)%50;renderBlank();document.getElementById("blanks").scrollIntoView({behavior:"smooth"});}
+document.getElementById("skipBlank").onclick=()=>{blankIndex=(blankIndex+1)%50;renderBlank();}
+document.getElementById("resetAll").onclick=()=>{
+  if(confirm("Reset all dossier progress?")){
+    state.revealed=[];state.matched={};state.blankCorrect=[];save();renderCases();renderMatch();blankIndex=0;renderBlank();
+  }
+};
+
+renderCases();renderMatch();renderBlank();updateGlobal();
+</script>
+</body>
+</html>
